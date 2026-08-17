@@ -78,7 +78,7 @@ flutter run
 
 ## Dosya Açıklamaları
 
-### `message_model.dart`
+### `chat_message.dart`
 Mesaj nesnelerinin yapısını tanımlar. Kullanıcı ve yapay zeka mesajlarını depolamak için gerekli olan veri modelini içerir.
 
 ### `chat_screen.dart`
