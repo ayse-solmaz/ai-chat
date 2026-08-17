@@ -1,17 +1,54 @@
-# ai_chat
+# AI Chat App
 
-A new Flutter project.
+Flutter ve Google Gemini API kullanılarak geliştirilmiş modern bir mobil yapay zeka sohbet uygulaması.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## Özellikler
 
-A few resources to get you started if this is your first Flutter project:
+* **Kullanıcı Dostu Arayüz:** Kullanıcı ve yapay zeka mesajları için sağa/sola hizalı özel sohbet balonları (MessageBubble).
+* **Google Gemini Entegrasyonu:** gemini-2.5-flash modeli ile hızlı ve dinamik yanıt akışı.
+* **Durum Yönetimi:** İstek sırasında dinamik yüklenme göstergesi (CircularProgressIndicator) ve anlık mesaj listesi güncellemesi.
+* **Hata Yönetimi:** Ağ veya API hatalarına karşı kontrollü asenkron yapı.
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Kullanılan Teknolojiler
+
+* **Framework:** Flutter
+* **Dil:** Dart
+* **Paketler:** http
+* **API:** Google Generative AI REST API (gemini-2.5-flash)
+
+---
+
+## Proje Yapısı
+
+lib/
+├── models/
+│   └── message_model.dart     # Mesaj veri modeli
+├── screens/
+│   └── chat_screen.dart       # Ana sohbet ekranı ve arayüz yönetimi
+├── services/
+│   └── api_service.dart       # Gemini API bağlantısı ve HTTP istekleri
+├── widgets/
+│   └── message_bubble.dart    # Mesaj balonu arayüz bileşeni
+└── main.dart                  # Uygulama başlangıç noktası
+
+---
+
+## Kurulum ve Çalıştırma
+
+1. Projeyi bilgisayarınıza klonlayın:
+   git clone https://github.com/KULLANICI_ADIN/ai_chat.git
+   cd ai_chat
+
+2. Bağımlılıkları yükleyin:
+   flutter pub get
+
+3. API Anahtarını Ekleyin:
+   lib/services/api_service.dart dosyasını açın ve _apiKey değişkenine kendi Google AI Studio anahtarınızı yazın:
+   static const String _apiKey = 'BURAYA_GEMINI_API_KEY_YAZIN';
+
+4. Uygulamayı çalıştırın:
+   flutter run
