@@ -1,6 +1,7 @@
 import 'package:ai_chat/models/message_model.dart';
 import 'package:flutter/material.dart';
 import '../widgets/message_bubble.dart';
+import '../services/api_service.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -13,19 +14,36 @@ class ChatScreen extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen> {
   List<ChatMessage> _messages = [];
   TextEditingController _textController = TextEditingController();
-  void _sendMessage() {
+  final ApiService _apiService = ApiService();
+  bool _isLoading = false;
+  void _sendMessage() async {
+    final userText = _textController.text;
     if (_textController.text.trim().isEmpty) {
       return;
     }
+    _textController.clear();
     setState(() {
-      _messages.add(ChatMessage(
-        text: _textController.text, 
-        isUser: true, 
+      _messages.add(
+        ChatMessage(
+        text: userText, 
+        isUser: true,
         createdAt: DateTime.now(),
-        )
-        );
-        _textController.clear();
-    });
+        ));
+         _isLoading=true;});
+        try {
+          final response = await _apiService.sendMessage(userText);
+          setState(() {
+            _messages.add(
+              ChatMessage(
+                text: response,
+                isUser: false,
+                createdAt: DateTime.now(),
+        ));
+        _isLoading = false;
+          });
+        } catch (e) {
+          setState((){_isLoading = false;});}
+      
   }
   @override
   Widget build(BuildContext context) {
