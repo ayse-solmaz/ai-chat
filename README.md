@@ -29,7 +29,7 @@ Flutter ve Google Gemini API kullanılarak geliştirilmiş modern bir mobil yapa
 ```
 lib/
 ├── models/
-│   └── message_model.dart       # Mesaj veri modeli
+│   └── chat_message.dart       # Mesaj veri modeli
 ├── screens/
 │   └── chat_screen.dart         # Ana sohbet ekranı ve arayüz yönetimi
 ├── services/
